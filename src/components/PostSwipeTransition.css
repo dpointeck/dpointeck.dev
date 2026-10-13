@@ -13,20 +13,20 @@
 }
 
 /* Forward navigation (next post): old slides left, new slides in from right */
-:root[data-view-transition-direction="forward"]::view-transition-old(post-content) {
+:root[data-view-transition-direction='forward']::view-transition-old(post-content) {
   animation-name: slide-out-to-left;
 }
 
-:root[data-view-transition-direction="forward"]::view-transition-new(post-content) {
+:root[data-view-transition-direction='forward']::view-transition-new(post-content) {
   animation-name: slide-in-from-right;
 }
 
 /* Backward navigation (prev post): old slides right, new slides in from left */
-:root[data-view-transition-direction="backward"]::view-transition-old(post-content) {
+:root[data-view-transition-direction='backward']::view-transition-old(post-content) {
   animation-name: slide-out-to-right;
 }
 
-:root[data-view-transition-direction="backward"]::view-transition-new(post-content) {
+:root[data-view-transition-direction='backward']::view-transition-new(post-content) {
   animation-name: slide-in-from-left;
 }
 

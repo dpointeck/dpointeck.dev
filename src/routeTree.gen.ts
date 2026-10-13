@@ -9,27 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UsesRouteImport } from './routes/uses'
-import { Route as SiteNoticeRouteImport } from './routes/site-notice'
-import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SiteNoticeRouteImport } from './routes/site-notice'
+import { Route as UsesRouteImport } from './routes/uses'
 import { Route as JournalIndexRouteImport } from './routes/journal/index'
 import { Route as JournalSlugRouteImport } from './routes/journal/$slug'
 
-const UsesRoute = UsesRouteImport.update({
-  id: '/uses',
-  path: '/uses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SiteNoticeRoute = SiteNoticeRouteImport.update({
-  id: '/site-notice',
-  path: '/site-notice',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
-  id: '/privacy-policy',
-  path: '/privacy-policy',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -37,9 +27,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteNoticeRoute = SiteNoticeRouteImport.update({
+  id: '/site-notice',
+  path: '/site-notice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsesRoute = UsesRouteImport.update({
+  id: '/uses',
+  path: '/uses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JournalIndexRoute = JournalIndexRouteImport.update({
@@ -123,25 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/uses': {
-      id: '/uses'
-      path: '/uses'
-      fullPath: '/uses'
-      preLoaderRoute: typeof UsesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/site-notice': {
-      id: '/site-notice'
-      path: '/site-notice'
-      fullPath: '/site-notice'
-      preLoaderRoute: typeof SiteNoticeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy-policy': {
-      id: '/privacy-policy'
-      path: '/privacy-policy'
-      fullPath: '/privacy-policy'
-      preLoaderRoute: typeof PrivacyPolicyRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -151,11 +137,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-notice': {
+      id: '/site-notice'
+      path: '/site-notice'
+      fullPath: '/site-notice'
+      preLoaderRoute: typeof SiteNoticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uses': {
+      id: '/uses'
+      path: '/uses'
+      fullPath: '/uses'
+      preLoaderRoute: typeof UsesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journal/': {

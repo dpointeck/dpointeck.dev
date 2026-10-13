@@ -4,11 +4,12 @@ import { PageHeader } from '../components/PageHeader'
 export const Route = createFileRoute('/site-notice')({
   component: SiteNoticePage,
   head: () => ({
-    meta: [
-      { title: 'Site Notice' },
-    ],
+    meta: [{ title: 'Site Notice' }],
     links: [
-      { rel: 'canonical', href: 'https://www.daniel-pointecker.net/site-notice' },
+      {
+        rel: 'canonical',
+        href: 'https://www.daniel-pointecker.net/site-notice',
+      },
     ],
   }),
 })

@@ -14,10 +14,10 @@ export function PageTransitionLogo() {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current)
       }
-      
+
       // Just animate the logo on navigation
       setIsTransitioning(true)
-      
+
       timeoutRef.current = setTimeout(() => {
         setIsTransitioning(false)
       }, ANIMATION_DURATION)

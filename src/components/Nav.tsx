@@ -16,15 +16,20 @@ const pages = [
   { name: 'uses', href: '/uses' },
 ]
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
   const location = useLocation()
-  const isActive = location.pathname === href || (href !== '/' && location.pathname.startsWith(href))
-  
+  const isActive =
+    location.pathname === href ||
+    (href !== '/' && location.pathname.startsWith(href))
+
   return (
-    <Link 
-      to={href}
-      className={`nav-link ${isActive ? 'active' : ''}`}
-    >
+    <Link to={href} className={`nav-link ${isActive ? 'active' : ''}`}>
       {children}
     </Link>
   )
@@ -33,9 +38,13 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 function HomeLink() {
   const location = useLocation()
   const isActive = location.pathname === '/'
-  
+
   return (
-    <Link to="/" className={`mobile-home-link ${isActive ? 'active' : ''}`} aria-label="Home">
+    <Link
+      to="/"
+      className={`mobile-home-link ${isActive ? 'active' : ''}`}
+      aria-label="Home"
+    >
       <IconHome className="mobile-home-icon" />
     </Link>
   )
@@ -53,12 +62,20 @@ export function Nav() {
     // Reserve space but don't show content to prevent layout shift
     return (
       <>
-        <nav className="desktop-nav" aria-hidden="true" style={{ visibility: 'hidden', minHeight: '4rem' }}>
+        <nav
+          className="desktop-nav"
+          aria-hidden="true"
+          style={{ visibility: 'hidden', minHeight: '4rem' }}
+        >
           <div className="container mx-auto">
             <div className="nav-container" />
           </div>
         </nav>
-        <nav className="mobile-nav" aria-hidden="true" style={{ visibility: 'hidden', minHeight: '4rem' }}>
+        <nav
+          className="mobile-nav"
+          aria-hidden="true"
+          style={{ visibility: 'hidden', minHeight: '4rem' }}
+        >
           <div className="mobile-nav-content" />
         </nav>
       </>
@@ -72,16 +89,20 @@ export function Nav() {
         <div className="container mx-auto">
           <div className="nav-container">
             <div className="brand">
-              <Link to="/" className="brand-link" aria-label="daniel pointecker">
+              <Link
+                to="/"
+                className="brand-link"
+                aria-label="daniel pointecker"
+              >
                 daniel pointecker
               </Link>
               <div className="social-nav">
                 {socialLinks.map((link) => (
-                  <a 
-                    href={link.url} 
-                    key={link.name} 
-                    aria-label={link.name} 
-                    target="_blank" 
+                  <a
+                    href={link.url}
+                    key={link.name}
+                    aria-label={link.name}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
                   >

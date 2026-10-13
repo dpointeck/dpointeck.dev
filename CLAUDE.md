@@ -18,6 +18,7 @@
 ## Architecture
 
 ### Route Structure
+
 ```
 src/routes/
 ├── __root.tsx          # Root layout (nav, footer, analytics)
@@ -34,6 +35,7 @@ src/routes/
 ```
 
 ### Components
+
 ```
 src/components/
 ├── Nav.tsx             # Desktop + mobile navigation
@@ -46,31 +48,40 @@ src/components/
 ```
 
 ### Server Functions
+
 ```
 src/lib/
 ├── post.ts             # Markdown processing utilities
-└── post.server.ts      # Server functions for data loading
+└── post.functions.ts   # Server function RPC wrappers for data loading
 ```
 
 Server functions use `createServerFn` from TanStack Start:
-- `fetchPost` - Fetches single post by slug (POST method with inputValidator)
+
+- `fetchPost` - Fetches single post by slug (POST method with validator)
 - `fetchPostsByYear` - Fetches all posts grouped by year (GET method)
 
 ### Data Files
+
 - `src/data/uses.yml` - Equipment and software lists
 - `_posts/*.md` - Blog posts in Markdown with frontmatter
 
 ## Development
 
 ### Commands
+
 ```bash
 bun install     # Install dependencies
 bun run dev     # Development server (port 3000)
 bun run build   # Production build
 bun run preview # Preview production build
+bun run typecheck # TypeScript 7 type checking
+bun run lint    # Oxlint correctness checks
+bun run format # Oxfmt formatting
+bun run format:check # Check formatting without writing
 ```
 
 ### Environment Variables
+
 ```
 VITE_FATHOM_SITE_ID         # Fathom Analytics site ID
 VITE_GOOGLE_SITE_VERIFY_ID  # Google Search Console verification
@@ -79,24 +90,28 @@ VITE_GOOGLE_SITE_VERIFY_ID  # Google Search Console verification
 ## Content
 
 ### Blog Posts
+
 Location: `_posts/` directory
 
 Required frontmatter:
+
 ```yaml
 ---
 slug: post-slug
-title: "Post Title"
+title: 'Post Title'
 date: 2024-01-15
-metadesc: "SEO description"
+metadesc: 'SEO description'
 ---
 ```
 
 Markdown is processed with:
+
 - `gray-matter` for frontmatter parsing
 - `remark-parse` + `remark-rehype` for Markdown to HTML
 - `rehype-pretty-code` with Shiki for syntax highlighting (GitHub Light theme)
 
 ### Adding New Pages
+
 1. Create file in `src/routes/` (e.g., `new-page.tsx`)
 2. Export Route with `createFileRoute`
 3. Add `head` function for meta tags
@@ -105,17 +120,20 @@ Markdown is processed with:
 ## Styling
 
 ### Approach
+
 - Tailwind CSS v4 with `@tailwindcss/typography` plugin
 - Plain CSS files for component-specific styles (converted from SCSS)
 - Custom fonts: Greycliff, Inter, CodeSaver (in `public/fonts/`)
 
 ### Color Scheme
+
 - Primary: Yellow gradient (`#FFF95A` to `#FFF22E`)
 - Dark mode: Green gradient (`#064e3b` to `#065f46`)
 
 ## Deployment
 
 ### Docker
+
 ```bash
 docker build \
   --build-arg NEXT_PUBLIC_FATHOM_SITE_ID=xxx \
@@ -124,12 +142,14 @@ docker build \
 ```
 
 The Dockerfile:
-- Uses Bun 1.3.5
+
+- Uses Bun 1.4.3 for both build and production stages
 - Builds with Vite/Vinxi
 - Outputs to `.output/` directory
 - Copies `src/data/` and `_posts/` for runtime data access
 - Runs Nitro server on port 3000
 
 ### Required in Production
+
 - `src/data/uses.yml` - Uses page data
 - `_posts/` - Blog post markdown files

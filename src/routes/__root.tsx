@@ -172,8 +172,9 @@ function RootComponent() {
     <html lang="en">
       <head>
         <style dangerouslySetInnerHTML={{ __html: fontFaceCSS }} />
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
             /* Critical CSS for icons - prevent FOUC */
             .social-link svg,
             .social-link .icon {
@@ -216,8 +217,9 @@ function RootComponent() {
                 display: none !important; 
               }
             }
-          `
-        }} />
+          `,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

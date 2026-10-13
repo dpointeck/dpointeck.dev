@@ -20,7 +20,10 @@ export function PostSwipeTransition({ children }: PostSwipeTransitionProps) {
   })
 
   return (
-    <div className="post-content" style={{ viewTransitionName: 'post-content' }}>
+    <div
+      className="post-content"
+      style={{ viewTransitionName: 'post-content' }}
+    >
       {children}
     </div>
   )

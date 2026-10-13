@@ -54,7 +54,7 @@ export function ProgressiveImage({
       {
         rootMargin: '50px',
         threshold: 0.01,
-      }
+      },
     )
 
     if (containerRef.current) {
@@ -84,7 +84,9 @@ export function ProgressiveImage({
 
   const containerStyle: React.CSSProperties = {
     ...(width && { width: typeof width === 'number' ? `${width}px` : width }),
-    ...(height && { height: typeof height === 'number' ? `${height}px` : height }),
+    ...(height && {
+      height: typeof height === 'number' ? `${height}px` : height,
+    }),
     ...(aspectRatio && { aspectRatio: aspectRatio.toString() }),
     ['--transition-duration' as string]: `${transitionDuration}ms`,
   }

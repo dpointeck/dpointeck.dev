@@ -8,16 +8,18 @@ export function ThemeSwitcher() {
 
   useEffect(() => {
     setMounted(true)
-    
+
     // Get theme from localStorage or default to system
     const savedTheme = localStorage.getItem('theme') as Theme | null
     const initialTheme = savedTheme || 'system'
     setTheme(initialTheme)
-    
+
     // Apply the theme
     const root = document.documentElement
     if (initialTheme === 'system') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches
       if (prefersDark) {
         root.classList.add('dark')
       } else {
@@ -48,7 +50,7 @@ export function ThemeSwitcher() {
   const toggleTheme = () => {
     const root = document.documentElement
     let newTheme: Theme
-    
+
     if (theme === 'system') {
       newTheme = 'light'
       root.classList.remove('dark')
@@ -57,7 +59,9 @@ export function ThemeSwitcher() {
       root.classList.add('dark')
     } else {
       newTheme = 'system'
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches
       if (prefersDark) {
         root.classList.add('dark')
       } else {
@@ -75,7 +79,13 @@ export function ThemeSwitcher() {
       <button
         className="text-muted transition-colors p-1.5"
         aria-label="Toggle theme"
-        style={{ width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        style={{
+          width: '28px',
+          height: '28px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

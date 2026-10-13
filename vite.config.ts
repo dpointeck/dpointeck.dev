@@ -2,11 +2,13 @@ import { defineConfig } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
-import viteTsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 
 const config = defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   plugins: [
     devtools(),
     nitro({
@@ -32,7 +34,8 @@ const config = defineConfig({
         // Images - cache for 1 week
         '/images/**': {
           headers: {
-            'Cache-Control': 'public, max-age=604800, stale-while-revalidate=86400',
+            'Cache-Control':
+              'public, max-age=604800, stale-while-revalidate=86400',
           },
         },
         // Favicon - cache for 1 week
@@ -42,10 +45,6 @@ const config = defineConfig({
           },
         },
       },
-    }),
-    // this is the plugin that enables path aliases
-    viteTsConfigPaths({
-      projects: ['./tsconfig.json'],
     }),
     tailwindcss(),
     tanstackStart(),

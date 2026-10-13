@@ -1,8 +1,8 @@
-import { SVGProps } from "react"
+import { SVGProps } from 'react'
 
 export const IconGithub = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <title>{"github"}</title>
+    <title>{'github'}</title>
     <g fillRule="nonzero" fill="none">
       <path d="M0 0h16v16H0z" />
       <path

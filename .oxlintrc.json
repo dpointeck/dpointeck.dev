@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react"],
+  "categories": {
+    "correctness": "error"
+  },
+  "overrides": [
+    {
+      "files": ["src/components/Nav.tsx", "src/components/ThemeSwitcher.tsx"],
+      "rules": {
+        "react/set-state-in-effect": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["src/routeTree.gen.ts"]
+}

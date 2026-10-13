@@ -13,7 +13,10 @@ export const Route = createFileRoute('/privacy-policy')({
       },
     ],
     links: [
-      { rel: 'canonical', href: 'https://www.daniel-pointecker.net/privacy-policy' },
+      {
+        rel: 'canonical',
+        href: 'https://www.daniel-pointecker.net/privacy-policy',
+      },
     ],
   }),
 })

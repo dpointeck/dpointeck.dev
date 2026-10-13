@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { fetchLatestPosts } from '../lib/post.server'
+import { fetchLatestPosts } from '../lib/post.functions'
 import './index.css'
 
 export const Route = createFileRoute('/')({
@@ -34,10 +34,10 @@ function HomePage() {
         Hi, I'm Daniel.
       </h1>
       <p className="text-lg md:text-xl leading-relaxed text-secondary">
-        I'm a software developer from 🇦🇹 focused on frontend development.
-        This site is a collection of things I constantly forget and
-        have to search every time I need them. If there's something helpful for
-        you, feel free to grab it.
+        I'm a software developer from 🇦🇹 focused on frontend development. This
+        site is a collection of things I constantly forget and have to search
+        every time I need them. If there's something helpful for you, feel free
+        to grab it.
       </p>
 
       <section className="mt-16">

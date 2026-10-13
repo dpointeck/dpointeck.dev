@@ -1,6 +1,6 @@
 import { useRef, useCallback } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { fetchPostWithNavigation } from '../../lib/post.server'
+import { fetchPostWithNavigation } from '../../lib/post.functions'
 import { PostNavigation } from '../../components/PostNavigation'
 import { PostSwipeTransition } from '../../components/PostSwipeTransition'
 import { useProgressiveImages, useSwipeGesture } from '../../hooks'
@@ -36,7 +36,10 @@ function useSwipeNavigation() {
         window.scrollTo({ top: 0, behavior: 'instant' })
       }
 
-      if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      if (
+        typeof document !== 'undefined' &&
+        'startViewTransition' in document
+      ) {
         document.documentElement.dataset.viewTransitionDirection = direction
         document.startViewTransition(async () => {
           performNavigation()
@@ -46,7 +49,7 @@ function useSwipeNavigation() {
         performNavigation()
       }
     },
-    [navigate]
+    [navigate],
   )
 }
 

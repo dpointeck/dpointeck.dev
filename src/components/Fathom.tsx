@@ -15,7 +15,9 @@ export default function Fathom() {
   useEffect(() => {
     if (!pathname) return
 
-    const searchString = new URLSearchParams(search as Record<string, string>).toString()
+    const searchString = new URLSearchParams(
+      search as Record<string, string>,
+    ).toString()
     trackPageview({
       url: pathname + (searchString ? `?${searchString}` : ''),
       referrer: document.referrer,

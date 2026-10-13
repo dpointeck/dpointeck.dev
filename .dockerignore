@@ -3,4 +3,10 @@ node_modules
 .vinxi
 .idea
 .vscode
-.env.local
+.env
+.env.*
+!.env.example
+.git
+.amp
+.nitro
+.tanstack

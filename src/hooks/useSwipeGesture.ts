@@ -77,7 +77,7 @@ export function useSwipeGesture(options: SwipeGestureOptions = {}) {
         onSwipeLeft?.()
       }
     },
-    [threshold, maxVerticalMovement, onSwipeLeft, onSwipeRight]
+    [threshold, maxVerticalMovement, onSwipeLeft, onSwipeRight],
   )
 
   useEffect(() => {

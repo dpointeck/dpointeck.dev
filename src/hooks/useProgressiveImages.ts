@@ -64,7 +64,7 @@ function getTinyImageUrl(src: string, width: number): string | null {
  */
 export function useProgressiveImages(
   containerRef: RefObject<HTMLElement | null>,
-  options: UseProgressiveImagesOptions = {}
+  options: UseProgressiveImagesOptions = {},
 ) {
   const {
     rootMargin = '50px',
@@ -87,7 +87,7 @@ export function useProgressiveImages(
           if (entry.isIntersecting) {
             const wrapper = entry.target as HTMLDivElement
             const fullImg = wrapper.querySelector<HTMLImageElement>(
-              '.progressive-img__full'
+              '.progressive-img__full',
             )
 
             if (fullImg) {
@@ -102,7 +102,7 @@ export function useProgressiveImages(
           }
         })
       },
-      { rootMargin, threshold: 0.01 }
+      { rootMargin, threshold: 0.01 },
     )
 
     images.forEach((img) => {
@@ -119,7 +119,10 @@ export function useProgressiveImages(
       // Create wrapper
       const wrapper = document.createElement('div')
       wrapper.className = 'progressive-img'
-      wrapper.style.setProperty('--transition-duration', `${transitionDuration}ms`)
+      wrapper.style.setProperty(
+        '--transition-duration',
+        `${transitionDuration}ms`,
+      )
 
       // Create placeholder image (tiny, pixelated)
       const placeholder = document.createElement('img')
@@ -169,5 +172,11 @@ export function useProgressiveImages(
     return () => {
       observer.disconnect()
     }
-  }, [containerRef, rootMargin, transitionDuration, contentKey, placeholderWidth])
+  }, [
+    containerRef,
+    rootMargin,
+    transitionDuration,
+    contentKey,
+    placeholderWidth,
+  ])
 }

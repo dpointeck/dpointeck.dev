@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { PageHeader } from '../../components/PageHeader'
-import { fetchPostsByYear } from '../../lib/post.server'
+import { fetchPostsByYear } from '../../lib/post.functions'
 import '../../components/Journal.css'
 
 export const Route = createFileRoute('/journal/')({
@@ -9,7 +9,10 @@ export const Route = createFileRoute('/journal/')({
   head: () => ({
     meta: [
       { title: 'Journal' },
-      { name: 'description', content: 'My journal about work and side projects' },
+      {
+        name: 'description',
+        content: 'My journal about work and side projects',
+      },
     ],
     links: [
       { rel: 'canonical', href: 'https://www.daniel-pointecker.net/journal' },
@@ -33,13 +36,18 @@ function JournalPage() {
 function PostsListYears({
   posts,
 }: {
-  posts: { year: number; posts: { slug: string; title: string; date: string }[] }[]
+  posts: {
+    year: number
+    posts: { slug: string; title: string; date: string }[]
+  }[]
 }) {
   return (
     <div className="styledPostsList max-w-2xl mx-auto">
       {posts.map((year) => (
         <div key={year.year} className="mt-16 first:mt-0">
-          <h2 className="text-2xl font-semibold mb-8 text-primary tracking-tight">{year.year}</h2>
+          <h2 className="text-2xl font-semibold mb-8 text-primary tracking-tight">
+            {year.year}
+          </h2>
           <ul className="space-y-4">
             {year.posts.map((post) => (
               <li key={post.slug}>

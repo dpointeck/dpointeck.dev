@@ -27,7 +27,7 @@ html.dark .progressive-image {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  
+
   opacity: 1;
   transition: opacity var(--transition-duration, 600ms) ease-out;
   z-index: 1;

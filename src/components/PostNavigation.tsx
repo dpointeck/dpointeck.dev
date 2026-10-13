@@ -29,7 +29,10 @@ function useViewTransitionNavigate() {
       }
 
       // Check for View Transition API support
-      if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      if (
+        typeof document !== 'undefined' &&
+        'startViewTransition' in document
+      ) {
         // Set direction for CSS to style the transition
         document.documentElement.dataset.viewTransitionDirection = direction
 
@@ -42,7 +45,7 @@ function useViewTransitionNavigate() {
         performNavigation()
       }
     },
-    [navigate]
+    [navigate],
   )
 }
 
@@ -55,7 +58,7 @@ export function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
       e.preventDefault()
       navigateWithTransition(prevPost.slug, 'backward')
     },
-    [prevPost, navigateWithTransition]
+    [prevPost, navigateWithTransition],
   )
 
   const handleNextClick = useCallback(
@@ -64,7 +67,7 @@ export function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
       e.preventDefault()
       navigateWithTransition(nextPost.slug, 'forward')
     },
-    [nextPost, navigateWithTransition]
+    [nextPost, navigateWithTransition],
   )
 
   return (

@@ -37,7 +37,9 @@ function UsesPage() {
       <PageHeader>Uses</PageHeader>
       <div className="mt-8 space-y-12">
         <section>
-          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">Tech</h2>
+          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">
+            Tech
+          </h2>
           <ul className="space-y-2.5 text-secondary">
             {usesData.equiptment.map((item: string) => (
               <li key={item}>{item}</li>
@@ -45,7 +47,9 @@ function UsesPage() {
           </ul>
         </section>
         <section>
-          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">Software</h2>
+          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">
+            Software
+          </h2>
           <ul className="space-y-2.5 text-secondary">
             {usesData.software.map((item: string) => (
               <li key={item}>{item}</li>
@@ -53,7 +57,9 @@ function UsesPage() {
           </ul>
         </section>
         <section>
-          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">EDC</h2>
+          <h2 className="text-xl font-semibold mb-4 text-primary tracking-tight">
+            EDC
+          </h2>
           <ul className="space-y-2.5 text-secondary">
             {usesData.edc.map((item: string) => (
               <li key={item}>{item}</li>

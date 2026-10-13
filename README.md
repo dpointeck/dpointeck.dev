@@ -4,7 +4,9 @@ Personal blog/portfolio website for Daniel Pointecker, built with TanStack Start
 
 ## Tech Stack
 
-- **Framework**: TanStack Start (React 19)
+- **Framework**: TanStack Start v1 (React 19, Vite 8)
+- **Type checking**: TypeScript 7
+- **Linting / formatting**: Oxlint / Oxfmt
 - **Routing**: TanStack Router (file-based)
 - **Styling**: Tailwind CSS v4
 - **Content**: Markdown with gray-matter + rehype-pretty-code
@@ -25,7 +27,31 @@ bun run build
 
 # Preview production build
 bun run preview
+
+# Check types, lint, and formatting without changing files
+bun run typecheck
+bun run lint
+bun run format:check
+
+# Format files, or format + fix lint issues + check types
+bun run format
+bun run check
 ```
+
+Vite requires Node.js 22.12+ (or 20.19+); TanStack Start requires Node.js
+22.12+ when using Node. Docker builds and production use Bun.
+
+Oxfmt retains single quotes, no semicolons, and an 80-column print width.
+Published Markdown posts are left untouched by formatting, and generated routes
+are excluded from linting and formatting. Oxlint checks
+correctness with TypeScript and React rules; this replaces the TanStack ESLint
+preset rather than reproducing every rule. The existing hydration guards in
+`Nav` and `ThemeSwitcher` are exempt from `react/set-state-in-effect`.
+
+Security overrides keep `js-yaml` on patched v4 and `postcss-selector-parser`
+on patched v7 until gray-matter and Typography update their dependency ranges.
+Frontmatter uses the existing `yaml` package through gray-matter's custom engine;
+do not use gray-matter's default engine, which calls the removed `safeLoad` API.
 
 ## Environment Variables
 
@@ -37,6 +63,8 @@ VITE_GOOGLE_SITE_VERIFY_ID=your_google_site_verification_id
 ```
 
 ## Docker
+
+Both build and production stages use the pinned Bun 1.4.3 image.
 
 ```bash
 docker build \
@@ -77,11 +105,10 @@ Create a markdown file in `_posts/` with frontmatter:
 ```yaml
 ---
 slug: my-post
-title: "My Post Title"
+title: 'My Post Title'
 date: 2024-01-15
-metadesc: "SEO description"
+metadesc: 'SEO description'
 ---
-
 Post content here...
 ```
 
@@ -93,11 +120,11 @@ Images in blog posts automatically get **progressive loading** with a pixelated 
 
 For the best pixelated placeholder effect, use images from these CDNs:
 
-| Service | Example URL |
-|---------|-------------|
-| **Unsplash** | `https://images.unsplash.com/photo-xxx?w=1200` |
+| Service        | Example URL                                                |
+| -------------- | ---------------------------------------------------------- |
+| **Unsplash**   | `https://images.unsplash.com/photo-xxx?w=1200`             |
 | **Cloudinary** | `https://res.cloudinary.com/xxx/image/upload/v1/photo.jpg` |
-| **Imgix** | `https://xxx.imgix.net/photo.jpg?w=1200` |
+| **Imgix**      | `https://xxx.imgix.net/photo.jpg?w=1200`                   |
 
 These services allow dynamic resizing, so the hook automatically generates a tiny 20px placeholder.
 
