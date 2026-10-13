@@ -1,4 +1,4 @@
-# CLAUDE.md - dp-next Project Guide
+# AGENTS.md - dp-next Project Guide
 
 ## Project Overview
 
